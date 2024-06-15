@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Report for {{ data.domain }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .section { margin-bottom: 20px; }
+        .section-title { font-size: 1.5em; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Domain Report for {{ data.domain }}</h1>
+    
+    <div class="section">
+        <div class="section-title">Server Location</div>
+        <p>{{ data.server_location }}</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">SSL Certificate</div>
+        <p>{{ data.ssl_certificate }}</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">WHOIS Information</div>
+        <pre>{{ data.whois }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">DNS Records</div>
+        <pre>{{ data.dns_records }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">HTTP Headers</div>
+        <pre>{{ data.headers }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Server Information</div>
+        <pre>{{ data.server_info }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Cookies</div>
+        <pre>{{ data.cookies }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Social Tags</div>
+        <pre>{{ data.social_tags }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Security Headers</div>
+        <pre>{{ data.security_headers }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Threats</div>
+        <pre>{{ data.threats }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Email Configuration</div>
+        <pre>{{ data.email_config }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Global Ranking</div>
+        <p>{{ data.global_ranking }}</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Redirects</div>
+        <pre>{{ data.redirects }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">TLS Security</div>
+        <pre>{{ data.tls_security }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Site Features</div>
+        <pre>{{ data.site_features }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Block Lists</div>
+        <pre>{{ data.block_lists }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Open Ports</div>
+        <pre>{{ data.open_ports }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Carbon Footprint</div>
+        <p>{{ data.carbon_footprint }}</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Crawl Rules</div>
+        <pre>{{ data.crawl_rules }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Sitemap</div>
+        <pre>{{ data.sitemap }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Tech Stack</div>
+        <pre>{{ data.tech_stack }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Traceroute</div>
+        <pre>{{ data.traceroute }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Archives</div>
+        <pre>{{ data.archives }}</pre>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Quality Metrics</div>
+        <pre>{{ data.quality_metrics }}</pre>
+    </div>
+</body>
+</html>

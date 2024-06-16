@@ -4,15 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Domain Report for {{ data.domain }}</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .section { margin-bottom: 20px; }
-        .section-title { font-size: 1.5em; font-weight: bold; margin-bottom: 10px; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        table, th, td { border: 1px solid black; }
-        th, td { padding: 8px; text-align: left; }
-        pre { background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
 </head>
 <body>
     <h1>Domain Report for {{ data.domain }}</h1>
@@ -139,10 +131,10 @@
     </div>
     
 
-    <div class="section">
+    <!-- <div class="section">
         <div class="section-title">Cookies</div>
         <pre>{{ data.cookies }}</pre>
-    </div>
+    </div> -->
 
     <div class="section">
         <div class="section-title">Social Tags</div>

@@ -1,0 +1,17 @@
+requests
+jinja2
+whois
+dnspython
+beautifulsoup4
+selenium
+ssl
+urllib
+whois
+subprocess
+os
+xml
+etree
+ElementTree
+bs4
+python-wappalyzer
+dotenv

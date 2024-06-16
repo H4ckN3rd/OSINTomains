@@ -1,24 +1,22 @@
 from Wappalyzer import Wappalyzer, WebPage
-import requests
 
 def get_tech_stack(domain):
     try:
-        # Ensure the domain has the correct protocol prefix
-        if not domain.startswith('http://') and not domain.startswith('https://'):
-            url = f'https://{domain}'
-        else:
-            url = domain
-
-        # Fetch the webpage content
-        response = requests.get(url, timeout=10)
-        webpage = WebPage.new_from_content(response.content, url)
-
-        # Analyze the technologies using Wappalyzer
         wappalyzer = Wappalyzer.latest()
+        url = f"{domain}"
+        webpage = WebPage.new_from_url(url)
         technologies = wappalyzer.analyze(webpage)
-
+        if not technologies:
+            raise Exception('Unable to find any technologies for site')
         return technologies
-
     except Exception as e:
         print(f"Error retrieving tech stack for {domain}: {e}")
         return None
+    
+if __name__ == "__main__":
+    test_url = input("Enter the URL: ")  # Replace with the URL you want to analyze
+    try:
+        metrics = get_tech_stack(test_url)
+        print(metrics)
+    except Exception as e:
+        print(f"An error occurred: {e}")

@@ -5,46 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Domain Report for {{ data.domain }}</title>
     <style>
-        body { font-family: Arial, sans-serif; }
+        body { font-family: Arial, sans-serif; margin: 20px; }
         .section { margin-bottom: 20px; }
-        .section-title { font-size: 1.5em; font-weight: bold; }
-        table { width: 100%; border-collapse: collapse; }
+        .section-title { font-size: 1.5em; font-weight: bold; margin-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
         table, th, td { border: 1px solid black; }
         th, td { padding: 8px; text-align: left; }
+        pre { background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; }
     </style>
 </head>
 <body>
     <h1>Domain Report for {{ data.domain }}</h1>
-    
+
+    <div class="section">
+        <div class="section-title">IP Address</div>
+        <p>{{ data.ip_address }}</p>
+    </div>
+
     <div class="section">
         <div class="section-title">Server Location</div>
-        <p>{{ data.server_location }}</p>
+        <p>
+            <strong>IP:</strong> {{ data.server_location.ip }}<br>
+            <strong>Anycast:</strong> {{ data.server_location.anycast }}<br>
+            <strong>City:</strong> {{ data.server_location.city }}<br>
+            <strong>Region:</strong> {{ data.server_location.region }}<br>
+            <strong>Country:</strong> {{ data.server_location.country }}<br>
+            <strong>Location:</strong> {{ data.server_location.loc }}<br>
+            <strong>Organization:</strong> {{ data.server_location.org }}<br>
+            <strong>Postal Code:</strong> {{ data.server_location.postal }}<br>
+            <strong>Timezone:</strong> {{ data.server_location.timezone }}<br>
+            <strong>Readme:</strong> <a href="{{ data.server_location.readme }}">{{ data.server_location.readme }}</a>
+        </p>
     </div>
 
     <div class="section">
         <div class="section-title">SSL Certificate</div>
-        <p>{{ data.ssl_certificate }}</p>
+        <p>
+            <strong>Subject:</strong><br>
+            &nbsp;&nbsp;<strong>Country Name:</strong> {{ data.ssl_certificate.subject.countryName }}<br>
+            &nbsp;&nbsp;<strong>State/Province Name:</strong> {{ data.ssl_certificate.subject.stateOrProvinceName }}<br>
+            &nbsp;&nbsp;<strong>Locality Name:</strong> {{ data.ssl_certificate.subject.localityName }}<br>
+            &nbsp;&nbsp;<strong>Organization Name:</strong> {{ data.ssl_certificate.subject.organizationName }}<br>
+            &nbsp;&nbsp;<strong>Common Name:</strong> {{ data.ssl_certificate.subject.commonName }}<br>
+            <strong>Issuer:</strong><br>
+            &nbsp;&nbsp;<strong>Country Name:</strong> {{ data.ssl_certificate.issuer.countryName }}<br>
+            &nbsp;&nbsp;<strong>Organization Name:</strong> {{ data.ssl_certificate.issuer.organizationName }}<br>
+            &nbsp;&nbsp;<strong>Common Name:</strong> {{ data.ssl_certificate.issuer.commonName }}<br>
+            <strong>Valid From:</strong> {{ data.ssl_certificate.validFrom }}<br>
+            <strong>Valid To:</strong> {{ data.ssl_certificate.validTo }}
+        </p>
     </div>
+    
 
     <div class="section">
         <div class="section-title">WHOIS Information</div>
-        <pre>{{ data.whois }}</pre>
+        <p><strong>Domain Name:</strong> {{ data.whois.domain_name }}<br>
+        <strong>Registrar:</strong> {{ data.whois.registrar }}<br>
+        <strong>WHOIS Server:</strong> {{ data.whois.whois_server }}<br>
+        <strong>Updated Date:</strong> {{ data.whois.updated_date }}<br>
+        <strong>Creation Date:</strong> {{ data.whois.creation_date }}<br>
+        <strong>Expiration Date:</strong> {{ data.whois.expiration_date }}<br>
+        <strong>Name Servers:</strong> {{ data.whois.name_servers }}<br>
+        <strong>Status:</strong> {{ data.whois.status }}<br>
+        <strong>Registrant Email:</strong> {{ data.whois.emails }}<br>
+        <strong>Registrant Name:</strong> {{ data.whois.name }}<br>
+        <strong>Registrant Organization:</strong> {{ data.whois.org }}<br>
+        <strong>Registrant Address:</strong> {{ data.whois.address }}<br>
+        <strong>Registrant City:</strong> {{ data.whois.city }}<br>
+        <strong>Registrant State:</strong> {{ data.whois.state }}<br>
+        <strong>Registrant Postal Code:</strong> {{ data.whois.registrant_postal_code }}<br>
+        <strong>Registrant Country:</strong> {{ data.whois.country }}</p>
     </div>
 
     <div class="section">
         <div class="section-title">DNS Records</div>
-        <pre>{{ data.dns_records }}</pre>
+        <table>
+            <thead>
+                <tr>
+                    <th>Address</th>
+                    <th>Hostname</th>
+                    <th>DoH Direct Supports</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in data.dns_records.dns %}
+                <tr>
+                    <td>{{ record.address }}</td>
+                    <td>{{ record.hostname }}</td>
+                    <td>{{ record.dohDirectSupports }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
     <div class="section">
         <div class="section-title">HTTP Headers</div>
-        <pre>{{ data.headers }}</pre>
+        <p>
+            <strong>Date:</strong> {{ data.headers.Date }}<br>
+            <strong>Content-Type:</strong> {{ data.headers.Content_Type }}<br>
+            <strong>Transfer-Encoding:</strong> {{ data.headers.Transfer_Encoding }}<br>
+            <strong>Connection:</strong> {{ data.headers.Connection }}<br>
+            <strong>Cache-Control:</strong> {{ data.headers.Cache_Control }}<br>
+            <strong>Content-Security-Policy:</strong> {{ data.headers.content_security_policy }}<br>
+            <strong>Last-Modified:</strong> {{ data.headers.last_modified }}<br>
+            <strong>Strict-Transport-Security:</strong> {{ data.headers.strict_transport_security }}<br>
+            <strong>X-Frame-Options:</strong> {{ data.headers.x_frame_options }}<br>
+            <strong>X-Served-By:</strong> {{ data.headers.x_served_by }}<br>
+            <strong>X-Cache:</strong> {{ data.headers.x_cache }}<br>
+            <strong>X-Cache-Hits:</strong> {{ data.headers.x_cache_hits }}<br>
+            <strong>X-Timer:</strong> {{ data.headers.x_timer }}<br>
+            <strong>Vary:</strong> {{ data.headers.vary }}<br>
+            <strong>CF-Cache-Status:</strong> {{ data.headers.cf_cache_status }}<br>
+            <strong>Age:</strong> {{ data.headers.Age }}<br>
+            <strong>Report-To:</strong> {{ data.headers.report_to }}<br>
+            <strong>NEL:</strong> {{ data.headers.NEL }}<br>
+            <strong>Server:</strong> {{ data.headers.Server }}<br>
+            <strong>CF-RAY:</strong> {{ data.headers.cf_ray }}<br>
+            <strong>Content-Encoding:</strong> {{ data.headers.content_encoding }}
+        </p>
     </div>
+    
 
     <div class="section">
-        <div class="section-title">Server Information</div>
-        <pre>{{ data.server_info }}</pre>
+        <div class="section-title">Security Headers</div>
+        <p>
+            <strong>Strict Transport Policy:</strong> {{ data.sec_headers.strictTransportPolicy }}<br>
+            <strong>X-Frame-Options:</strong> {{ data.sec_headers.xFrameOptions }}<br>
+            <strong>X-Content-Type-Options:</strong> {{ data.sec_headers.xContentTypeOptions }}<br>
+            <strong>X-XSS-Protection:</strong> {{ data.sec_headers.xXSSProtection }}<br>
+            <strong>Content-Security-Policy:</strong> {{ data.sec_headers.contentSecurityPolicy }}
+        </p>
     </div>
+    
 
     <div class="section">
         <div class="section-title">Cookies</div>
@@ -53,87 +146,171 @@
 
     <div class="section">
         <div class="section-title">Social Tags</div>
-        <pre>{{ data.social_tags }}</pre>
+        <p>
+            {% if data.social_tags.title %}
+                <strong>Title:</strong> {{ data.social_tags.title }}<br>
+            {% endif %}
+            {% if data.social_tags.description %}
+                <strong>Description:</strong> {{ data.social_tags.description }}<br>
+            {% endif %}
+            {% if data.social_tags.keywords %}
+                <strong>Keywords:</strong> {{ data.social_tags.keywords }}<br>
+            {% endif %}
+            {% if data.social_tags.canonicalUrl %}
+                <strong>Canonical URL:</strong> {{ data.social_tags.canonicalUrl }}<br>
+            {% endif %}
+            {% if data.social_tags.ogTitle %}
+                <strong>OG Title:</strong> {{ data.social_tags.ogTitle }}<br>
+            {% endif %}
+            {% if data.social_tags.ogType %}
+                <strong>OG Type:</strong> {{ data.social_tags.ogType }}<br>
+            {% endif %}
+            {% if data.social_tags.ogImage %}
+                <strong>OG Image:</strong> {{ data.social_tags.ogImage }}<br>
+            {% endif %}
+            {% if data.social_tags.ogUrl %}
+                <strong>OG URL:</strong> {{ data.social_tags.ogUrl }}<br>
+            {% endif %}
+            {% if data.social_tags.ogDescription %}
+                <strong>OG Description:</strong> {{ data.social_tags.ogDescription }}<br>
+            {% endif %}
+            {% if data.social_tags.ogSiteName %}
+                <strong>OG Site Name:</strong> {{ data.social_tags.ogSiteName }}<br>
+            {% endif %}
+            {% if data.social_tags.twitterCard %}
+                <strong>Twitter Card:</strong> {{ data.social_tags.twitterCard }}<br>
+            {% endif %}
+            {% if data.social_tags.twitterSite %}
+                <strong>Twitter Site:</strong> {{ data.social_tags.twitterSite }}<br>
+            {% endif %}
+            {% if data.social_tags.twitterCreator %}
+                <strong>Twitter Creator:</strong> {{ data.social_tags.twitterCreator }}<br>
+            {% endif %}
+            {% if data.social_tags.twitterTitle %}
+                <strong>Twitter Title:</strong> {{ data.social_tags.twitterTitle }}<br>
+            {% endif %}
+            {% if data.social_tags.twitterDescription %}
+                <strong>Twitter Description:</strong> {{ data.social_tags.twitterDescription }}<br>
+            {% endif %}
+            {% if data.social_tags.twitterImage %}
+                <strong>Twitter Image:</strong> {{ data.social_tags.twitterImage }}<br>
+            {% endif %}
+            {% if data.social_tags.themeColor %}
+                <strong>Theme Color:</strong> {{ data.social_tags.themeColor }}<br>
+            {% endif %}
+            {% if data.social_tags.robots %}
+                <strong>Robots:</strong> {{ data.social_tags.robots }}<br>
+            {% endif %}
+            {% if data.social_tags.googlebot %}
+                <strong>Googlebot:</strong> {{ data.social_tags.googlebot }}<br>
+            {% endif %}
+            {% if data.social_tags.generator %}
+                <strong>Generator:</strong> {{ data.social_tags.generator }}<br>
+            {% endif %}
+            {% if data.social_tags.viewport %}
+                <strong>Viewport:</strong> {{ data.social_tags.viewport }}<br>
+            {% endif %}
+            {% if data.social_tags.author %}
+                <strong>Author:</strong> {{ data.social_tags.author }}<br>
+            {% endif %}
+            {% if data.social_tags.publisher %}
+                <strong>Publisher:</strong> {{ data.social_tags.publisher }}<br>
+            {% endif %}
+            {% if data.social_tags.favicon %}
+                <strong>Favicon:</strong> {{ data.social_tags.favicon }}<br>
+            {% endif %}
+        </p>
     </div>
-
-    <div class="section">
-        <div class="section-title">Security Headers</div>
-        <pre>{{ data.security_headers }}</pre>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Threats</div>
-        <pre>{{ data.threats }}</pre>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Email Configuration</div>
-        <pre>{{ data.email_config }}</pre>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Global Ranking</div>
-        <p>{{ data.global_ranking }}</p>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Redirects</div>
-        <pre>{{ data.redirects }}</pre>
-    </div>
-
-    <div class="section">
-        <div class="section-title">TLS Security</div>
-        <pre>{{ data.tls_security }}</pre>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Site Features</div>
-        <pre>{{ data.site_features }}</pre>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Block Lists</div>
-        <pre>{{ data.block_lists }}</pre>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Open Ports</div>
-        <pre>{{ data.open_ports }}</pre>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Carbon Footprint</div>
-        <p>{{ data.carbon_footprint }}</p>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Crawl Rules</div>
-        <pre>{{ data.crawl_rules }}</pre>
-    </div>
+    
 
     <div class="section">
         <div class="section-title">Sitemap</div>
-        <pre>{{ data.sitemap }}</pre>
+        <p>
+            <strong>Sitemap URLs:</strong><br>
+            {% for url in data.sitemap.sitemap_urls %}
+                {{ url }}<br>
+            {% endfor %}
+        </p>
+    </div>
+    
+
+    <div class="section">
+        <div class="section-title">Open Ports & Traceroute</div>
+        <pre>{{ data.open_ports }}</pre>
+    </div>
+
+    <!-- <div class="section">
+        <div class="section-title">Quality</div>
+        <pre>{{ data.quality_metrics }}</pre>
+    </div> -->
+
+    <div class="section">
+        <div class="section-title">Threat Detection</div>
+        <ul>
+            <li>
+                <strong>Google Safe Browsing:</strong>
+                {% if data.threat.google_safe_browsing.unsafe %}
+                    Detected as unsafe
+                {% else %}
+                    No threats detected
+                {% endif %}
+            </li>
+            <li>
+                <strong>Cloudmersive:</strong>
+                {% if data.threat.cloudmersive.CleanResult == False %}
+                    <ul>
+                        <li>Threat Type: {{ data.threat.cloudmersive.WebsiteThreatType }}</li>
+                        <li>Response Code: {{ data.threat.cloudmersive.WebsiteHttpResponseCode }}</li>
+                        <li>Found Viruses: {{ data.threat.cloudmersive.FoundViruses }}</li>
+                    </ul>
+                {% else %}
+                    Clean
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+    
+
+    
+
+    <div class="section">
+        <div class="section-title">Carbon Footprint</div>
+        <p><strong>URL:</strong> {{ data.carbon_footprint.url }}<br>
+        <strong>Green:</strong> {{ data.carbon_footprint.green }}<br>
+        <strong>Bytes:</strong> {{ data.carbon_footprint.bytes }}<br>
+        <strong>Cleaner Than:</strong> {{ data.carbon_footprint.cleanerThan }}<br>
+        <strong>Rating:</strong> {{ data.carbon_footprint.rating }}<br>
+        <strong>Adjusted Bytes:</strong> {{ data.carbon_footprint.statistics.adjustedBytes }}<br>
+        <strong>Energy:</strong> {{ data.carbon_footprint.statistics.energy }}<br>
+        <strong>CO2 (Grid):</strong> {{ data.carbon_footprint.statistics.co2.grid.grams }} grams<br>
+        <strong>CO2 (Renewable):</strong> {{ data.carbon_footprint.statistics.co2.renewable.grams }} grams</p>
     </div>
 
     <div class="section">
         <div class="section-title">Tech Stack</div>
-        <pre>{{ data.tech_stack }}</pre>
+        <p>
+            {% for technology in data.tech_stack %}
+                {{ technology }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
     </div>
 
     <div class="section">
-        <div class="section-title">Traceroute</div>
-        <pre>{{ data.traceroute }}</pre>
+        <div class="section-title">Firewall</div>
+        <p>
+            <strong>Has WAF:</strong> {{ data.waf_detection.hasWaf }}<br>
+            <strong>WAF Provider:</strong> {{ data.waf_detection.waf }}
+        </p>
     </div>
+    
 
     <div class="section">
-        <div class="section-title">Archives</div>
-        <pre>{{ data.archives }}</pre>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Quality Metrics</div>
-        <pre>{{ data.quality_metrics }}</pre>
+        <div class="section-title">Robots.txt</div>
+        <p>
+            {% for entry in data.robots_txt.robots %}
+                <strong>{{ entry.label }}:</strong> {{ entry.value }}<br>
+            {% endfor %}
+        </p>
     </div>
 </body>
 </html>

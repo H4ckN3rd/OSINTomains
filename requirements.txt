@@ -1,6 +1,5 @@
 requests
 jinja2
-WeasyPrint
 whois
 dnspython
 beautifulsoup4

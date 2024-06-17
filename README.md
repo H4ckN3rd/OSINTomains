@@ -22,7 +22,6 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
 
 - SSL Certificate Information
 - Carbon Footprint Analysis
-- Cookie Details
 - DNS Records
 - WHOIS Information
 - Web Application Firewall Detection
@@ -83,11 +82,6 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
 
 - **File:** `modules/carbon_footprint.py`
 - **Function:** `get_carbon_footprint(domain)`
-
-### Cookie Details
-
-- **File:** `modules/cookies.py`
-- **Function:** `get_cookies(domain)`
 
 ### DNS Records
 
@@ -165,7 +159,6 @@ The output of the tool is an HTML report (`domain_report.html`), which includes:
 - **WHOIS Information**: Ownership and registration details.
 - **DNS Records**: Details of DNS records associated with the domain.
 - **HTTP Headers**: HTTP headers returned by the domain's server.
-- **Cookies**: Information about cookies set by the domain.
 - **Social Media Tags**: Open Graph and Twitter Card tags.
 - **Open Ports**: Results from an Nmap scan of the domain's IP address.
 - **Carbon Footprint**: Estimate of the domain's carbon footprint.

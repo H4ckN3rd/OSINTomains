@@ -4,7 +4,6 @@ whois
 dnspython
 beautifulsoup4
 selenium
-ssl
 urllib
 whois
 subprocess
@@ -14,4 +13,4 @@ etree
 ElementTree
 bs4
 python-wappalyzer
-dotenv
+python-dotenv

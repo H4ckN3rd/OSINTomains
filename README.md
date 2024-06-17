@@ -45,11 +45,11 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
     cd OSINTomains
     ```
 
-2. Create a virtual environment and activate it:
-    ```sh
-    python -m venv env
-    source env/bin/activate   # On Windows use `env\Scripts\activate`
-    ```
+2. In the root directory, create a .env file and add the following content:
+   ```sh 
+    CLOUDMERSIVE_API_KEY="YOUR_CLOUDMERSIVE_API_KEY"
+    GOOGLE_CLOUD_API_KEY="YOUR_GOOGLE_CLOUD_API_KEY"
+   ```
 
 3. Install the required dependencies:
     ```sh

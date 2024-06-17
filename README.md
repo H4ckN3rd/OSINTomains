@@ -1,5 +1,14 @@
-# OSINTomains
+```
+   $$$$$$\   $$$$$$\  $$$$$$\ $$\   $$\ $$$$$$$$\                                $$\                     
+  $$  __$$\ $$  __$$\ \_$$  _|$$$\  $$ |\__$$  __|                               \__|                    
+  $$ /  $$ |$$ /  \__|  $$ |  $$$$\ $$ |   $$ | $$$$$$\  $$$$$$\$$$$\   $$$$$$\  $$\ $$$$$$$\   $$$$$$$\ 
+  $$ |  $$ |\$$$$$$\    $$ |  $$ $$\$$ |   $$ |$$  __$$\ $$  _$$  _$$\  \____$$\ $$ |$$  __$$\ $$  _____|
+  $$ |  $$ | \____$$\   $$ |  $$ \$$$$ |   $$ |$$ /  $$ |$$ / $$ / $$ | $$$$$$$ |$$ |$$ |  $$ |\$$$$$$\  
+  $$ |  $$ |$$\   $$ |  $$ |  $$ |\$$$ |   $$ |$$ |  $$ |$$ | $$ | $$ |$$  __$$ |$$ |$$ |  $$ | \____$$\ 
+   $$$$$$  |\$$$$$$  |$$$$$$\ $$ | \$$ |   $$ |\$$$$$$  |$$ | $$ | $$ |\$$$$$$$ |$$ |$$ |  $$ |$$$$$$$  |
+   \______/  \______/ \______|\__|  \__|   \__| \______/ \__| \__| \__| \_______|\__|\__|  \__|\_______/ 
 
+```
 **Developers:** Jatin, Joy, Arpit
 
 ## Table of Contents
@@ -10,9 +19,6 @@
 4. [Usage](#usage)
 5. [Modules](#modules)
 6. [Output](#output)
-7. [Dependencies](#dependencies)
-8. [Troubleshooting](#troubleshooting)
-9. [License](#license)
 
 ## Project Overview
 
@@ -59,17 +65,20 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
 
 ## Usage
 
-1. Run the main script:
+1. Before running the script, ensure that `nmap` is installed. If not, you can download and install it from [nmap.org](https://nmap.org/download).
+
+2. Run the main script:
     ```sh
-    python main.py
+    python .\main.py
     ```
 
-2. Enter the domain when prompted:
+3. Enter the domain when prompted:
     ```sh
     Enter the Domain: https://example.com
     ```
     
-3. Upon completion, an HTML report will be generated in the root directory of the project. The report filename will be based on the domain (e.g., `example_report.html`).
+4. Upon completion, an HTML report will be generated in the root directory of the project. The report filename will be based on the domain (e.g., `example_report.html`).
+
 
 ## Modules
 
@@ -169,14 +178,3 @@ The output of the tool is an HTML report (`domain_report.html`), which includes:
 - **Security Headers**: Security-related HTTP headers.
 - **Sitemap URLs**: URLs listed in the domain's sitemap.
 - **Threat Analysis**: Analysis of potential threats associated with the domain.
-
-## Dependencies
-
-- Python 3.x
-- `requests`
-- `jinja2`
-- `xml.etree.ElementTree`
-- `socket`
-- `time`
-- `urllib.parse`
-- Other dependencies specified in `requirements.txt`

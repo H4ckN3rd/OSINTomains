@@ -6,11 +6,6 @@ beautifulsoup4
 selenium
 urllib3
 whois
-subprocess
-os
-xml
-etree
-ElementTree
 bs4
 python-wappalyzer
 python-dotenv

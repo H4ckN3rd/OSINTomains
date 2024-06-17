@@ -85,10 +85,8 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
     ```sh
     Enter the Domain: https://example.com
     ```
-
-3. The tool will display an ASCII art logo and proceed to gather information about the entered domain.
-
-4. Upon completion, an HTML report will be generated in the root directory of the project. The report filename will be based on the domain (e.g., `example_report.html`).
+    
+3. Upon completion, an HTML report will be generated in the root directory of the project. The report filename will be based on the domain (e.g., `example_report.html`).
 
 ## Modules
 

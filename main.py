@@ -100,8 +100,8 @@ def main(domain):
             }
 
             # Print data for debugging purposes
-            for key, value in data.items():
-                print(f"{key}: {value}")
+            #for key, value in data.items():
+            #    print(f"{key}: {value}")
 
             report_filename = create_html_report(data, domain)
             print(f"Report generated: {report_filename}")

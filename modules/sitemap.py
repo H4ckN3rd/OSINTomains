@@ -13,14 +13,13 @@ def fetch_sitemap(domain):
             sitemap_res.raise_for_status()
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 404:
-
                 robots_url = domain.rstrip('/') + '/robots.txt'
                 robots_res = requests.get(robots_url, timeout=hard_timeout)
                 robots_txt = robots_res.text.split('\n')
 
                 for line in robots_txt:
                     if line.lower().startswith('sitemap:'):
-                        sitemap_url = line.split(' ')[1].strip()
+                        sitemap_url = line.split(':', 1)[1].strip()
                         break
 
                 if not sitemap_url:
@@ -30,8 +29,15 @@ def fetch_sitemap(domain):
             else:
                 raise e
 
-        root = ET.fromstring(sitemap_res.content)
-        sitemap_urls = [child.text.strip() for child in root.findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
+        # Check if the response is valid XML
+        try:
+            root = ET.fromstring(sitemap_res.content)
+        except ET.ParseError:
+            return {'error': 'Invalid XML content'}
+
+        # Extract URLs from sitemap
+        namespace = {'ns': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+        sitemap_urls = [elem.text.strip() for elem in root.findall('.//ns:loc', namespace)]
 
         return {'sitemap_urls': sitemap_urls}
 
@@ -40,7 +46,6 @@ def fetch_sitemap(domain):
 
     except requests.exceptions.RequestException as e:
         return {'error': str(e)}
-    
 
 if __name__ == "__main__":
     test_domain = input("Enter the domain: ")  

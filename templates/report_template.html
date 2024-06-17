@@ -231,11 +231,6 @@
         <pre>{{ data.open_ports }}</pre>
     </div>
 
-    <!-- <div class="section">
-        <div class="section-title">Quality</div>
-        <pre>{{ data.quality_metrics }}</pre>
-    </div> -->
-
     <div class="section">
         <div class="section-title">Threat Detection</div>
         <ul>
@@ -281,9 +276,13 @@
     <div class="section">
         <div class="section-title">Tech Stack</div>
         <p>
-            {% for technology in data.tech_stack %}
-                {{ technology }}{% if not loop.last %}, {% endif %}
-            {% endfor %}
+            {% if data.tech_stack %}
+                {% for technology in data.tech_stack %}
+                    {{ technology }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            {% else %}
+                No technologies detected.
+            {% endif %}
         </p>
     </div>
 

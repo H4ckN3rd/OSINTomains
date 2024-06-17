@@ -7,3 +7,8 @@ def run_nmap(domain):
     except Exception as e:
         print(f"Error running Nmap scan for {domain}: {e}")
         return None
+    
+if __name__ == "__main__":
+    domain = input("Enter the domain: ")
+    nmap = run_nmap(domain)
+    print(nmap)

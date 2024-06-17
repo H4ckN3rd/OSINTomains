@@ -1,12 +1,11 @@
 requests
 jinja2
-whois
 dnspython
 beautifulsoup4
 selenium
 urllib3
-whois
 bs4
+python-whois
 python-wappalyzer
 python-dotenv
 python-nmap

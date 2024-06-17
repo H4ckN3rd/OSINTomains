@@ -41,7 +41,7 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your-repo/OSINTomains.git
+    git clone https://github.com/jatink2004/OSINTomains.git
     cd OSINTomains
     ```
 

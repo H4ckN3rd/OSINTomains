@@ -4,9 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Domain Report for {{ data.domain }}</title>
-    <link rel="stylesheet" type="text/css" href="static/styles.css">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        h1 {
+            width: 100%;
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+            text-transform: uppercase;
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+        .section {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 20px;
+            width: calc(33% - 40px);
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .ascii-art {
+            white-space: pre;
+            font-family: monospace;
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .section-title {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section strong {
+            color: red;
+        }
+        .section p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f0f0f0;
+            color: #333;
+            text-transform: uppercase;
+        }
+        table td {
+            color: #333;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        a {
+            color: #337ab7; 
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+        a:hover {
+            color: #23527c;
+            text-decoration: underline;
+        }
+    </style>
+    
 </head>
 <body>
+    <div class="ascii-art">
+        $$$$$$\   $$$$$$\  $$$$$$\ $$\   $$\ $$$$$$$$\                                $$\                     
+       $$  __$$\ $$  __$$\ \_$$  _|$$$\  $$ |\__$$  __|                               \__|                    
+       $$ /  $$ |$$ /  \__|  $$ |  $$$$\ $$ |   $$ | $$$$$$\  $$$$$$\$$$$\   $$$$$$\  $$\ $$$$$$$\   $$$$$$$\ 
+       $$ |  $$ |\$$$$$$\    $$ |  $$ $$\$$ |   $$ |$$  __$$\ $$  _$$  _$$\  \____$$\ $$ |$$  __$$\ $$  _____|
+       $$ |  $$ | \____$$\   $$ |  $$ \$$$$ |   $$ |$$ /  $$ |$$ / $$ / $$ | $$$$$$$ |$$ |$$ |  $$ |\$$$$$$\  
+       $$ |  $$ |$$\   $$ |  $$ |  $$ |\$$$ |   $$ |$$ |  $$ |$$ | $$ | $$ |$$  __$$ |$$ |$$ |  $$ | \____$$\ 
+        $$$$$$  |\$$$$$$  |$$$$$$\ $$ | \$$ |   $$ |\$$$$$$  |$$ | $$ | $$ |\$$$$$$$ |$$ |$$ |  $$ |$$$$$$$  |
+        \______/  \______/ \______|\__|  \__|   \__| \______/ \__| \__| \__| \_______|\__|\__|  \__|\_______/ 
+ </div>
     <h1>Domain Report for {{ data.domain }}</h1>
 
     <div class="section">
@@ -26,7 +127,6 @@
             <strong>Organization:</strong> {{ data.server_location.org }}<br>
             <strong>Postal Code:</strong> {{ data.server_location.postal }}<br>
             <strong>Timezone:</strong> {{ data.server_location.timezone }}<br>
-            <strong>Readme:</strong> <a href="{{ data.server_location.readme }}">{{ data.server_location.readme }}</a>
         </p>
     </div>
 
@@ -71,25 +171,30 @@
 
     <div class="section">
         <div class="section-title">DNS Records</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Address</th>
-                    <th>Hostname</th>
-                    <th>DoH Direct Supports</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for record in data.dns_records.dns %}
-                <tr>
-                    <td>{{ record.address }}</td>
-                    <td>{{ record.hostname }}</td>
-                    <td>{{ record.dohDirectSupports }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% if data.dns_records %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th>Hostname</th>
+                        <th>DoH Direct Supports</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in data.dns_records.dns %}
+                    <tr>
+                        <td>{{ record.address }}</td>
+                        <td>{{ record.hostname }}</td>
+                        <td>{{ record.dohDirectSupports }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No DNS Records found.</p>
+        {% endif %}
     </div>
+    
 
     <div class="section">
         <div class="section-title">HTTP Headers</div>
@@ -129,12 +234,45 @@
             <strong>Content-Security-Policy:</strong> {{ data.sec_headers.contentSecurityPolicy }}
         </p>
     </div>
+
+    <div class="section">
+        <div class="section-title">Cookies</div>
+        {% if data.cookies %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                        <th>Domain</th>
+                        <th>Path</th>
+                        <th>Expiry</th>
+                        <th>HTTP Only</th>
+                        <th>Secure</th>
+                        <th>SameSite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cookies in data.cookies %}
+                    <tr>
+                        <td>{{ cookies.name }}</td>
+                        <td>{{ cookies.value }}</td>
+                        <td>{{ cookies.domain }}</td>
+                        <td>{{ cookies.path }}</td>
+                        <td>{{ cookies.expiry }}</td>
+                        <td>{{ cookies.httpOnly }}</td>
+                        <td>{{ cookies.secure }}</td>
+                        <td>{{ cookies.sameSite }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No Cookie information available.</p>
+        {% endif %}
+    </div>
+    
     
 
-    <!-- <div class="section">
-        <div class="section-title">Cookies</div>
-        <pre>{{ data.cookies }}</pre>
-    </div> -->
 
     <div class="section">
         <div class="section-title">Social Tags</div>

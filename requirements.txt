@@ -9,3 +9,5 @@ python-whois
 python-wappalyzer
 python-dotenv
 python-nmap
+undetected_chromedriver
+selenium

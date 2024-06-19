@@ -54,3 +54,9 @@ def generate_report(url, filename='report.html'):
         print(f"Report generated successfully: {filename}")
     except Exception as e:
         print(f"An error occurred: {e}")
+
+
+if __name__ == "__main__":
+    url = input("Enter the domain: ").strip()
+    qualtity = get_quality_metrics(url)
+    print(f"Cookies for {url}: {qualtity}")

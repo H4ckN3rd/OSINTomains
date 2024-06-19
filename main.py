@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 from jinja2 import Environment, FileSystemLoader
 from modules.certificate import get_ssl_certificate
 from modules.carbon_footprint import get_carbon_footprint
-#from modules.cookies import get_cookies
+from modules.cookies import get_cookies
 from modules.dns_info import resolve_dns
 from modules.domain_info import get_domain_whois
 from modules.firewall import detect_waf
@@ -84,7 +84,7 @@ def main(domain):
                 'dns_records': resolve_dns(domain),
                 'headers': get_headers(domain),
                 'server_info': get_server_location(domain),
-                #'cookies': get_cookies(domain),
+                'cookies': get_cookies(domain),
                 'social_tags': get_social_tags(domain),
                 #'global_ranking': get_global_ranking(domain),
                 'open_ports': run_nmap(ip_address), 

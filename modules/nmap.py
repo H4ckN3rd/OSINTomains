@@ -1,4 +1,6 @@
 import subprocess
+import nmap
+
 
 def run_nmap(domain):
     try:

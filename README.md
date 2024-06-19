@@ -58,7 +58,7 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
 
 3. Install the required dependencies:
     ```sh
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
     ```
 
 4. Ensure the `templates` directory contains `report_template.html` and the `static` directory contains `styles.css`.

@@ -50,11 +50,27 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
     cd OSINTomains
     ```
 
-2. In the root directory, create a .env file and add the following content:
-   ```sh 
-    CLOUDMERSIVE_API_KEY="YOUR_CLOUDMERSIVE_API_KEY"
-    GOOGLE_CLOUD_API_KEY="YOUR_GOOGLE_CLOUD_API_KEY"
-   ```
+2. **API Keys Setup**
+
+   ### Get API Keys
+
+   - Obtain your Google API key [Here](https://developers.google.com/speed/docs/insights/v5/get-started).
+   - Get your Cloudmersive API key [Here](https://portal.cloudmersive.com/keys).
+
+   ### Configure Environment Variables
+
+   To set up your API keys:
+
+   1. In the root directory of your project, create a `.env` file if it doesn't exist.
+
+   2. Add the following content to the `.env` file:
+
+      ```sh
+      CLOUDMERSIVE_API_KEY="YOUR_CLOUDMERSIVE_API_KEY"
+      GOOGLE_CLOUD_API_KEY="YOUR_GOOGLE_CLOUD_API_KEY"
+      ```
+
+      Replace `"YOUR_CLOUDMERSIVE_API_KEY"` and `"YOUR_GOOGLE_CLOUD_API_KEY"` with the API keys you obtained in the previous step.
 
 3. Install the required dependencies:
     ```sh
@@ -62,6 +78,7 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
     ```
 
 4. Ensure the `templates` directory contains `report_template.html` and the `static` directory contains `styles.css`.
+
 
 ## Usage
 

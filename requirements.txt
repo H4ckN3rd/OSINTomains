@@ -11,3 +11,4 @@ python-dotenv
 python-nmap
 undetected_chromedriver
 selenium
+setuptools

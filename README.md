@@ -52,12 +52,12 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
 
 2. **API Keys Setup**
 
-   ### Get API Keys
+   Get API Keys
 
    - Obtain your Google API key [Here](https://developers.google.com/speed/docs/insights/v5/get-started).
    - Get your Cloudmersive API key [Here](https://portal.cloudmersive.com/keys).
 
-   ### Configure Environment Variables
+   Configure Environment Variables
 
    To set up your API keys:
 

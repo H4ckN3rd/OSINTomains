@@ -457,34 +457,34 @@
     
 
     <div class="section" style="color: white;" >
-        <div class="section-title">Open Ports & Traceroute</div>
-        <pre>{{ data.open_ports }}</pre>
+        <div class="section-title" style="display: inline-block; text-align: center;">Open Ports & Traceroute</div>
+        <pre style="text-align: left; display: inline-block; width: 100%; margin: 0;">{{ data.open_ports }}</pre>
     </div>
 
     <div class="section" style="color: white;" >
-        <div class="section-title">Threat Detection</div>
-        <ul>
-            <li>
-                <strong>Google Safe Browsing:</strong>
-                {% if data.threat.google_safe_browsing.unsafe %}
-                    Detected as unsafe
-                {% else %}
-                    No threats detected
-                {% endif %}
-            </li>
-            <li>
-                <strong>Cloudmersive:</strong>
-                {% if data.threat.cloudmersive.CleanResult == False %}
-                    <ul>
-                        <li>Threat Type: {{ data.threat.cloudmersive.WebsiteThreatType }}</li>
-                        <li>Response Code: {{ data.threat.cloudmersive.WebsiteHttpResponseCode }}</li>
-                        <li>Found Viruses: {{ data.threat.cloudmersive.FoundViruses }}</li>
-                    </ul>
-                {% else %}
-                    Clean
-                {% endif %}
-            </li>
-        </ul>
+        <div class="section-title" style="display: inline-block; text-align: center;">Threat Detection</div>
+    <ul style="text-align: left; display: inline-block; width: 100%; margin: 0;">
+        <li>
+            <strong>Google Safe Browsing:</strong>
+            {% if data.threat.google_safe_browsing.unsafe %}
+                Detected as unsafe
+            {% else %}
+                No threats detected
+            {% endif %}
+        </li>
+        <li>
+            <strong>Cloudmersive:</strong>
+            {% if data.threat.cloudmersive.CleanResult == False %}
+                <ul>
+                    <li>Threat Type: {{ data.threat.cloudmersive.WebsiteThreatType }}</li>
+                    <li>Response Code: {{ data.threat.cloudmersive.WebsiteHttpResponseCode }}</li>
+                    <li>Found Viruses: {{ data.threat.cloudmersive.FoundViruses }}</li>
+                </ul>
+            {% else %}
+                Clean
+            {% endif %}
+        </li>
+    </ul>
     </div>
     
 

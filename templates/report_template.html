@@ -6,29 +6,54 @@
     <title>Domain Report for {{ data.domain }}</title>
     <style>
         body {
-            background-color: #f0f0f0;
             color: #333;
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            height: 100vh;
+            
+            background: rgb(20, 20, 20);
         }
         h1 {
             width: 100%;
             text-align: center;
-            color: #333;
+            color: #ff0000;
             margin: 20px 0;
             text-transform: uppercase;
             font-size: 28px;
             letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+        }
+
+        .floating-button:hover {
+            background-color: #930000;
         }
         .section {
-            background-color: #fff;
-            border: 2px solid #ddd;
+            background-color: #333;
+            border: 2px solid #292929;
             border-radius: 10px;
-            margin: 10px;
+            margin: 15px;
             padding: 20px;
             width: calc(33% - 40px);
             box-sizing: border-box;
@@ -38,19 +63,65 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
+        .navbar {
+    width: 100%;
+    background-color: rgb(20, 20, 20);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+.navbar-title {
+    color: white;
+    font-size: 1.5em;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.navbar-search {
+    display: flex;
+}
+
+#search-input {
+    padding: 6px;
+    margin-right: 6px;
+    border: none;
+    border-radius: 4px;
+}
+
+#search-button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background: rgb(134, 0, 0);
+}
+
         .ascii-art {
-            white-space: pre;
-            font-family: monospace;
-            color: red;
-            text-align: center;
-            margin-bottom: 20px;
+        white-space: pre;
+        font-family: monospace;
+        color: red;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 60px;
         }
         .section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.4);
         }
         .section-title {
-            color: #333;
+            color: #ffffff;
             font-size: 1.2em;
             margin-bottom: 10px;
             text-transform: uppercase;
@@ -62,6 +133,7 @@
         .section p {
             margin: 10px 0;
             line-height: 1.6;
+            color: white;
         }
         table {
             width: 100%;
@@ -79,7 +151,7 @@
             text-transform: uppercase;
         }
         table td {
-            color: #333;
+            color: white;
         }
         pre {
             white-space: pre-wrap;
@@ -94,10 +166,30 @@
             color: #23527c;
             text-decoration: underline;
         }
+        .footer {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            margin-top: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
     </style>
     
 </head>
 <body>
+
+    <div class="navbar">
+        <div class="navbar-search">
+            <input type="text" id="search-input" placeholder="Search for sections...">
+            <button id="search-button">Search</button>
+        </div>
+        <div class="navbar-title">Domain Analysis Tool</div>
+    </div>
+    
     <div class="ascii-art">
         $$$$$$\   $$$$$$\  $$$$$$\ $$\   $$\ $$$$$$$$\                                $$\                     
        $$  __$$\ $$  __$$\ \_$$  _|$$$\  $$ |\__$$  __|                               \__|                    
@@ -364,12 +456,12 @@
     </div>
     
 
-    <div class="section">
+    <div class="section" style="color: white;" >
         <div class="section-title">Open Ports & Traceroute</div>
         <pre>{{ data.open_ports }}</pre>
     </div>
 
-    <div class="section">
+    <div class="section" style="color: white;" >
         <div class="section-title">Threat Detection</div>
         <ul>
             <li>
@@ -441,5 +533,50 @@
             {% endfor %}
         </p>
     </div>
+    <div class="footer">End of Report</div>
+
+    <button id="top-button" class="floating-button">↑</button>
+
+    <script>
+        window.addEventListener('resize', adjustLayout);
+window.addEventListener('load', adjustLayout);
+
+function adjustLayout() {
+    const sections = document.querySelectorAll('.section');
+    const containerWidth = document.body.clientWidth;
+
+    if (containerWidth < 768) {
+        sections.forEach(section => {
+            section.style.width = '100%';
+        });
+    } else if (containerWidth < 1200) {
+        sections.forEach(section => {
+            section.style.width = 'calc(50% - 40px)';
+        });
+    } else {
+        sections.forEach(section => {
+            section.style.width = 'calc(33% - 40px)';
+        });
+    }
+}
+
+
+    document.getElementById('search-button').addEventListener('click', function() {
+        const searchText = document.getElementById('search-input').value.toLowerCase();
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            if (section.textContent.toLowerCase().includes(searchText)) {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+        });
+    });
+
+    document.getElementById('top-button').addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    </script>
 </body>
 </html>

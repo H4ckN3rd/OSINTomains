@@ -42,6 +42,11 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
 - Threat Analysis
 - Technology Stack Detection
 
+## Screenshots
+
+![image](https://github.com/jatink2004/OSINTomains/blob/master/Screenshots/SS1.png?raw=true)
+![image](https://github.com/jatink2004/OSINTomains/blob/master/Screenshots/SS2.png?raw=true)
+
 ## Installation
 
 1. Clone the repository:

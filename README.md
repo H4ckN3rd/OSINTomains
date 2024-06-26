@@ -1,4 +1,4 @@
-ik```
+```
    $$$$$$\   $$$$$$\  $$$$$$\ $$\   $$\ $$$$$$$$\                                $$\                     
   $$  __$$\ $$  __$$\ \_$$  _|$$$\  $$ |\__$$  __|                               \__|                    
   $$ /  $$ |$$ /  \__|  $$ |  $$$$\ $$ |   $$ | $$$$$$\  $$$$$$\$$$$\   $$$$$$\  $$\ $$$$$$$\   $$$$$$$\ 
@@ -17,8 +17,7 @@ ik```
 2. [Features](#features)
 3. [Installation](#installation)
 4. [Usage](#usage)
-5. [Modules](#modules)
-6. [Output](#output)
+5. [Output](#output)
 
 ## Project Overview
 
@@ -100,7 +99,6 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
     ```
     
 4. Upon completion, an HTML report will be generated in the root directory of the project. The report filename will be based on the domain (e.g., `example_report.html`).
-
 
 ## Output
 

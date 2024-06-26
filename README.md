@@ -1,4 +1,4 @@
-```
+ik```
    $$$$$$\   $$$$$$\  $$$$$$\ $$\   $$\ $$$$$$$$\                                $$\                     
   $$  __$$\ $$  __$$\ \_$$  _|$$$\  $$ |\__$$  __|                               \__|                    
   $$ /  $$ |$$ /  \__|  $$ |  $$$$\ $$ |   $$ | $$$$$$\  $$$$$$\$$$$\   $$$$$$\  $$\ $$$$$$$\   $$$$$$$\ 
@@ -101,83 +101,6 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
     
 4. Upon completion, an HTML report will be generated in the root directory of the project. The report filename will be based on the domain (e.g., `example_report.html`).
 
-
-## Modules
-
-### SSL Certificate Information
-
-- **File:** `modules/certificate.py`
-- **Function:** `get_ssl_certificate(domain)`
-
-### Carbon Footprint Analysis
-
-- **File:** `modules/carbon_footprint.py`
-- **Function:** `get_carbon_footprint(domain)`
-
-### DNS Records
-
-- **File:** `modules/dns_info.py`
-- **Function:** `resolve_dns(domain)`
-
-### WHOIS Information
-
-- **File:** `modules/domain_info.py`
-- **Function:** `get_domain_whois(domain)`
-
-### Web Application Firewall Detection
-
-- **File:** `modules/firewall.py`
-- **Function:** `detect_waf(domain)`
-
-### HTTP Headers
-
-- **File:** `modules/headers.py`
-- **Function:** `get_headers(domain)`
-
-### Nmap Port Scanning
-
-- **File:** `modules/nmap.py`
-- **Function:** `run_nmap(ip_address)`
-
-### Quality Metrics
-
-- **File:** `modules/quality.py`
-- **Function:** `get_quality_metrics(domain)`
-
-### Robots.txt Analysis
-
-- **File:** `modules/robots.py`
-- **Function:** `fetch_robots_txt(domain)`
-
-### Security Headers Check
-
-- **File:** `modules/sec_headers.py`
-- **Function:** `check_security_headers(domain)`
-
-### Server Location Information
-
-- **File:** `modules/server_info.py`
-- **Function:** `get_server_location(ip_address)`
-
-### Sitemap Retrieval
-
-- **File:** `modules/sitemap.py`
-- **Function:** `fetch_sitemap(domain)`
-
-### Social Media Tags
-
-- **File:** `modules/social_tags.py`
-- **Function:** `get_social_tags(domain)`
-
-### Threat Analysis
-
-- **File:** `modules/threats.py`
-- **Function:** `handler(domain)`
-
-### Technology Stack Detection
-
-- **File:** `modules/tech_stack.py`
-- **Function:** `get_tech_stack(domain)`
 
 ## Output
 

@@ -40,14 +40,14 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
 
 ## Screenshots
 
-![image](https://github.com/jatink2004/OSINTomains/blob/master/Screenshots/SS1.png?raw=true)
-![image](https://github.com/jatink2004/OSINTomains/blob/master/Screenshots/SS2.png?raw=true)
+![image](https://github.com/H4ckN3rd/OSINTomains/blob/master/Screenshots/SS1.png?raw=true)
+![image](https://github.com/H4ckN3rd/OSINTomains/blob/master/Screenshots/SS2.png?raw=true)
 
 ## Installation
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/jatink2004/OSINTomains.git
+    git clone https://github.com/H4ckN3rd/OSINTomains.git
     cd OSINTomains
     ```
 

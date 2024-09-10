@@ -16,7 +16,7 @@
 4. [Usage](#usage)
 5. [Output](#output)
 
-## Project Overview
+## Overview
 
 OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a variety of information about a given domain. This tool performs comprehensive checks and generates an HTML report containing detailed insights about the domain.
 

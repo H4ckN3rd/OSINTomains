@@ -108,7 +108,7 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
 2. Run the Docker container:
 
 ```sh
-    docker run -it --name <container_name> <tag>
+    docker run -it <container_name> <tag>
 ```    
 3. Follow the prompts inside the container as usual to generate the report.
 

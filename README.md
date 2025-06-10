@@ -84,18 +84,33 @@ OSINTomains is an Open Source Intelligence (OSINT) tool designed to gather a var
 ## Usage
 
 1. Before running the script, ensure that `nmap` is installed. If not, you can download and install it from [nmap.org](https://nmap.org/download).
-
 2. Run the main script:
-    ```sh
-    python .\main.py
-    ```
+```sh
+   python .\main.py
+```
 
 3. Enter the domain when prompted:
-    ```sh
+    
+```sh
     Enter the Domain: https://example.com
-    ```
+```
     
 4. Upon completion, an HTML report will be generated in the root directory of the project. The report filename will be based on the domain (e.g., `example_report.html`).
+    
+## Using Docker
+
+1. Build the Docker image:
+    
+```sh
+    docker build -t <tag> -f Dockerfile .
+```
+    
+2. Run the Docker container:
+
+```sh
+    docker run -it --name <container_name> <tag>
+```    
+3. Follow the prompts inside the container as usual to generate the report.
 
 ## Output
 
